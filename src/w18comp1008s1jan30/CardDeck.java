@@ -1,6 +1,8 @@
 package w18comp1008s1jan30;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -28,6 +30,35 @@ public class CardDeck {
     public void displayDeck()
     {
         for (Card card:deck)
-            System.out.println(card);
+            System.out.println(card.toString());
+    }
+    
+    /**
+     * This method will remove and return the top card from the deck
+     */
+    public Card dealTopCard()
+    {
+        //ensure there are still cards in the deck
+        if (deck.size()>0)
+            return deck.get(0);
+        else
+            return null;
+    }
+    
+    /**
+     * This method will randomize the order of the cards
+     */
+    public void shuffle()
+    {
+        Collections.shuffle(deck);
+    }
+    
+    /**
+     * This method will return a random card from the deck
+     */
+    public Card getRandomCard()
+    {
+        SecureRandom rng = new SecureRandom();
+        return deck.remove(rng.nextInt(deck.size()));
     }
 }

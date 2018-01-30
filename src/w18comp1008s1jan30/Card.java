@@ -64,5 +64,15 @@ public class Card {
             throw new IllegalArgumentException("Card values must be 2-14 inclusive");
     }
     
+    /**
+     * This method will describe a card as the face of suit.  For example
+     * "2 of spades".  This overrides the toString() method inherited from 
+     * the object class
+     */
+    @Override
+    public String toString()
+    {
+        return faceName + " of " + suit;
+    }
     
 }
