@@ -39,6 +39,11 @@ public class GameOfWar
             ArrayList<Card> warPile = new ArrayList<>();
             playHand(warPile);
         }
+        
+        if (p1Hand.size()>0)
+            System.out.println("Congratulations player 1");
+        else
+            System.out.println("Congratulations player 2");
     }
     
     
@@ -47,8 +52,15 @@ public class GameOfWar
      */
     public void playHand(ArrayList<Card> warPile)
     {
+        
+        
         Card p1Card = p1Hand.remove(0);
         Card p2Card = p2Hand.remove(0);
+     
+        System.out.printf("P1 # of cards: %d, card played: %s",p1Hand.size()+1,
+                                        p1Card);
+        System.out.printf("  P2 # of cards: %d, card played: %s%n",p2Hand.size()+1,
+                                        p2Card);
         
         //player 1 wins
         if (p1Card.getFaceValue() > p2Card.getFaceValue())
@@ -68,6 +80,7 @@ public class GameOfWar
         }
         else //it must be war!!!
         {
+            System.out.println("~~~~~~~~~~~~~~WAR!!!~~~~~~~~~~~~~");
             warPile.add(p1Card);
             warPile.add(p2Card);
             
@@ -78,6 +91,7 @@ public class GameOfWar
                 p2Hand.add(p1Card);
                 p2Hand.add(p2Card);
                 p2Hand.addAll(p1Hand);
+                p1Hand.clear();
                 return;
             }
             else if (p2Hand.size() < 4)
@@ -86,6 +100,7 @@ public class GameOfWar
                 p1Hand.add(p1Card);
                 p1Hand.add(p2Card);
                 p1Hand.addAll(p2Hand);
+                p2Hand.clear();
                 return;
             }
             //both players have enough cards

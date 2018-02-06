@@ -40,7 +40,7 @@ public class CardDeck {
     {
         //ensure there are still cards in the deck
         if (deck.size()>0)
-            return deck.get(0);
+            return deck.remove(0);
         else
             return null;
     }
